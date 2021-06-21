@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:examples xmlns:ns2="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd">
+    <externalDefinitions>
+        <definition extID="middleware.baremetal.MIMXRT1052"/>
+        <definition extID="platform.drivers.common.MIMXRT1052"/>
+        <definition extID="platform.drivers.clock.MIMXRT1052"/>
+        <definition extID="device.MIMXRT1052_CMSIS.MIMXRT1052"/>
+        <definition extID="platform.Include_core_cm7.MIMXRT1052"/>
+        <definition extID="platform.Include_common.MIMXRT1052"/>
+        <definition extID="platform.Include_dsp.MIMXRT1052"/>
+        <definition extID="platform.drivers.lpuart.MIMXRT1052"/>
+        <definition extID="ComponentType.4d7078a423cb823543511cd4883a478ede1583fe"/>
+        <definition extID="platform.drivers.igpio.MIMXRT1052"/>
+        <definition extID="platform.drivers.iomuxc.MIMXRT1052"/>
+        <definition extID="utility.debug_console.MIMXRT1052"/>
+        <definition extID="component.serial_manager.MIMXRT1052"/>
+        <definition extID="component.lists.MIMXRT1052"/>
+        <definition extID="component.serial_manager_uart.MIMXRT1052"/>
+        <definition extID="component.lpuart_adapter.MIMXRT1052"/>
+        <definition extID="platform.drivers.xip_board.MIMXRT1052"/>
+        <definition extID="ComponentType.ed387fa568c43d296691a743b17c863d2025ffe"/>
+        <definition extID="ComponentType.b12ee99631eaec8efdfeaafe11559bb09fe5945b"/>
+        <definition extID="ComponentType.a6ae4ef1fc88cd692d34324230e6d533867ace"/>
+        <definition extID="ComponentType.158e35cd16bc8e756e5883f44499f9ffd32d24a2"/>
+        <definition extID="COMPACT-1052"/>
+        <definition extID="carrier_v1_compact_1052"/>
+        <definition extID="mcuxpresso"/>
+        <definition extID="com.nxp.mcuxpresso"/><definition extID="platform.drivers.cache_armv7_m7.MIMXRT1052"></definition>
+    	<definition extID="platform.drivers.enet.MIMXRT1052"></definition>
+    </externalDefinitions>
+    <example device="COMPACT-1052" board="carrier_v1_compact_1052" dependency="middleware.baremetal.MIMXRT1052 platform.drivers.common.MIMXRT1052 platform.drivers.clock.MIMXRT1052 device.MIMXRT1052_CMSIS.MIMXRT1052 platform.Include_core_cm7.MIMXRT1052 platform.Include_common.MIMXRT1052 platform.Include_dsp.MIMXRT1052 platform.drivers.lpuart.MIMXRT1052 ComponentType.4d7078a423cb823543511cd4883a478ede1583fe platform.drivers.igpio.MIMXRT1052 platform.drivers.iomuxc.MIMXRT1052 utility.debug_console.MIMXRT1052 component.serial_manager.MIMXRT1052 component.lists.MIMXRT1052 component.serial_manager_uart.MIMXRT1052 component.lpuart_adapter.MIMXRT1052 platform.drivers.xip_board.MIMXRT1052 ComponentType.ed387fa568c43d296691a743b17c863d2025ffe ComponentType.b12ee99631eaec8efdfeaafe11559bb09fe5945b ComponentType.a6ae4ef1fc88cd692d34324230e6d533867ace ComponentType.158e35cd16bc8e756e5883f44499f9ffd32d24a2 platform.drivers.cache_armv7_m7.MIMXRT1052 platform.drivers.enet.MIMXRT1052" category="lwip_examples" id="lwip_examples_lwip_ping_bm" name="lwip_ping_bm">
+        <projects>
+            <project type="com.crt.advproject.projecttype.exe" nature="org.eclipse.cdt.core.cnature"/>
+        </projects>
+        <toolchainSettings>
+            <toolchainSetting id_refs="com.nxp.mcuxpresso">
+                <buildConfigurations>
+                    <buildConfiguration instance_of="com.nxp.mcuxpresso.ide.build_config.debug" id="com.nxp.mcuxpresso.ide.build_config.debug" name="Debug">
+                        <description>Debug build</description>
+                    </buildConfiguration>
+                    <buildConfiguration instance_of="com.nxp.mcuxpresso.ide.build_config.release" id="com.nxp.mcuxpresso.ide.build_config.release" name="Release">
+                        <description>Release build</description>
+                    </buildConfiguration>
+                </buildConfigurations>
+                <option id="gnu.cpp.compiler.option.preprocessor.def" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="com.crt.advproject.cpp.prefixmap" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>"../$(@D)/"=.</value>
+                </option>
+                <option id="com.crt.advproject.c.misc.dialect" type="enum" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>com.crt.advproject.misc.dialect.gnu99</value>
+                </option>
+                <option id="gnu.c.compiler.option.preprocessor.def.symbols" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>CPU_MIMXRT1052CVL5B</value>
+                    <value>CPU_MIMXRT1052CVL5B_cm7</value>
+                    <value>SDK_DEBUGCONSOLE=1</value>
+                    <value>CR_INTEGER_PRINTF</value>
+                    <value>PRINTF_FLOAT_ENABLE=0</value>
+                    <value>PRINTF_ADVANCED_ENABLE=1</value>
+                    <value>XIP_EXTERNAL_FLASH=1</value>
+                    <value>XIP_BOOT_HEADER_ENABLE=1</value>
+                    <value>SERIAL_PORT_TYPE_UART=1</value>
+                    <value>__MCUXPRESSO</value>
+                    <value>__USE_CMSIS</value>
+                    <value>DEBUG</value>
+                    <value>__REDLIB__</value>
+                </option>
+                <option id="gnu.c.compiler.option.misc.other" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin</value>
+                </option>
+                <option id="com.crt.advproject.gcc.prefixmap" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>"../$(@D)/"=.</value>
+                </option>
+                <option id="gnu.both.asm.option.flags.crt" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>-c -x assembler-with-cpp -D__REDLIB__</value>
+                </option>
+                <option id="gnu.cpp.link.option.libs" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="gnu.cpp.link.option.paths" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="gnu.cpp.link.option.other" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="com.crt.advproject.link.cpp.lto" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.cpp.nanofloat" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.cpp.nanofloat.scanf" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.sections.cpp" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="gnu.c.link.option.libs" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="gnu.c.link.option.paths" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release"/>
+                <option id="gnu.c.link.option.other" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>-Map="${BuildArtifactFileBaseName}.map"</value>
+                    <value>--gc-sections</value>
+                    <value>-print-memory-usage</value>
+                    <value>--sort-section=alignment</value>
+                    <value>--cref</value>
+                </option>
+                <option id="com.crt.advproject.link.gcc.lto" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.gcc.hdrlib" type="enum" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>com.crt.advproject.gcc.link.hdrlib.codered.semihost_nf</value>
+                </option>
+                <option id="com.crt.advproject.link.gcc.nanofloat" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.gcc.nanofloat.scanf" type="boolean" build_configs="com.nxp.mcuxpresso.ide.build_config.debug com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>false</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.load.image" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>false;</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.heapAndStack" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>&amp;Heap:Default;Post Data;0x1000&amp;Stack:Default;End;0x1000</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.data" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>Default</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.sections" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.debug">
+                    <value>isd=*(NonCacheable.init);region=SRAM_DTC;type=.data</value>
+                    <value>isd=*(NonCacheable);region=SRAM_DTC;type=.bss</value>
+                </option>
+                <option id="gnu.c.compiler.option.preprocessor.def.symbols" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>CPU_MIMXRT1052CVL5B</value>
+                    <value>CPU_MIMXRT1052CVL5B_cm7</value>
+                    <value>FSL_RTOS_BM</value>
+                    <value>SDK_OS_BAREMETAL</value>
+                    <value>SDK_DEBUGCONSOLE=0</value>
+                    <value>CR_INTEGER_PRINTF</value>
+                    <value>PRINTF_FLOAT_ENABLE=0</value>
+                    <value>XIP_EXTERNAL_FLASH=1</value>
+                    <value>XIP_BOOT_HEADER_ENABLE=1</value>
+                    <value>SERIAL_PORT_TYPE_UART=1</value>
+                    <value>__MCUXPRESSO</value>
+                    <value>__USE_CMSIS</value>
+                    <value>NDEBUG</value>
+                    <value>__REDLIB__</value>
+                    <value>FSL_FEATURE_PHYKSZ8081_USE_RMII50M_MODE</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.heapAndStack" type="string" build_configs="com.nxp.mcuxpresso.ide.build_config.release">
+                    <value>&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default</value>
+                </option>
+                <option id="com.crt.advproject.link.memory.sections" type="stringList" build_configs="com.nxp.mcuxpresso.ide.build_config.release"/>
+            </toolchainSetting>
+        </toolchainSettings>
+        <include_paths>
+            <include_path path="source"/>
+            <include_path path="mdio"/>
+            <include_path path="device"/>
+            <include_path path="phy"/>
+            <include_path path="lwip/contrib/apps/ping"/>
+            <include_path path="lwip/port/arch"/>
+            <include_path path="lwip/src/include/compat/posix/arpa"/>
+            <include_path path="lwip/src/include/compat/posix/net"/>
+            <include_path path="lwip/src/include/compat/posix"/>
+            <include_path path="lwip/src/include/compat/posix/sys"/>
+            <include_path path="lwip/src/include/compat/stdc"/>
+            <include_path path="lwip/src/include/lwip"/>
+            <include_path path="lwip/src/include/lwip/priv"/>
+            <include_path path="lwip/src/include/lwip/prot"/>
+            <include_path path="lwip/src/include/netif"/>
+            <include_path path="lwip/src/include/netif/ppp"/>
+            <include_path path="lwip/src/include/netif/ppp/polarssl"/>
+            <include_path path="component/serial_manager"/>
+            <include_path path="component/lists"/>
+            <include_path path="lwip/port"/>
+            <include_path path="component/uart"/>
+            <include_path path="xip"/>
+            <include_path path="lwip/src"/>
+            <include_path path="lwip/src/include"/>
+        </include_paths>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/board" target_path="board" type="src">
+            <files mask="board.c"/>
+            <files mask="clock_config.c"/>
+            <files mask="dcd.c"/>
+            <files mask="peripherals.c"/>
+            <files mask="pin_mux.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/board" target_path="board" type="c_include">
+            <files mask="board.h"/>
+            <files mask="clock_config.h"/>
+            <files mask="dcd.h"/>
+            <files mask="peripherals.h"/>
+            <files mask="pin_mux.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/lists" target_path="component/lists" type="src">
+            <files mask="generic_list.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/lists" target_path="component/lists" type="c_include">
+            <files mask="generic_list.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/serial_manager" target_path="component/serial_manager" type="src">
+            <files mask="serial_manager.c"/>
+            <files mask="serial_port_uart.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/serial_manager" target_path="component/serial_manager" type="c_include">
+            <files mask="serial_manager.h"/>
+            <files mask="serial_port_internal.h"/>
+            <files mask="serial_port_uart.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/uart" target_path="component/uart" type="src">
+            <files mask="lpuart_adapter.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/component/uart" target_path="component/uart" type="c_include">
+            <files mask="uart.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/device" target_path="device" type="c_include">
+            <files mask="COMPACT.h"/>
+            <files mask="MIMXRT1052.h"/>
+            <files mask="MIMXRT1052_features.h"/>
+            <files mask="fsl_device_registers.h"/>
+            <files mask="system_MIMXRT1052.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/device" target_path="device" type="src">
+            <files mask="system_MIMXRT1052.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/contrib/apps/ping" target_path="lwip/contrib/apps/ping" type="src">
+            <files mask="ping.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/contrib/apps/ping" target_path="lwip/contrib/apps/ping" type="c_include">
+            <files mask="ping.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/port/arch" target_path="lwip/port/arch" type="c_include">
+            <files mask="cc.h"/>
+            <files mask="perf.h"/>
+            <files mask="sys_arch.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/port" target_path="lwip/port" type="src">
+            <files mask="enet_ethernetif.c"/>
+            <files mask="enet_ethernetif_kinetis.c"/>
+            <files mask="sys_arch.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/port" target_path="lwip/port" type="c_include">
+            <files mask="enet_ethernetif.h"/>
+            <files mask="enet_ethernetif_priv.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src" target_path="lwip/src" type="other">
+            <files mask="Filelists.cmake"/>
+            <files mask="Filelists.mk"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/api" target_path="lwip/src/api" type="src">
+            <files mask="api_lib.c"/>
+            <files mask="api_msg.c"/>
+            <files mask="err.c"/>
+            <files mask="if_api.c"/>
+            <files mask="netbuf.c"/>
+            <files mask="netdb.c"/>
+            <files mask="netifapi.c"/>
+            <files mask="sockets.c"/>
+            <files mask="tcpip.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/core" target_path="lwip/src/core" type="src">
+            <files mask="altcp.c"/>
+            <files mask="altcp_alloc.c"/>
+            <files mask="altcp_tcp.c"/>
+            <files mask="def.c"/>
+            <files mask="dns.c"/>
+            <files mask="inet_chksum.c"/>
+            <files mask="init.c"/>
+            <files mask="ip.c"/>
+            <files mask="mem.c"/>
+            <files mask="memp.c"/>
+            <files mask="netif.c"/>
+            <files mask="pbuf.c"/>
+            <files mask="raw.c"/>
+            <files mask="stats.c"/>
+            <files mask="sys.c"/>
+            <files mask="tcp.c"/>
+            <files mask="tcp_in.c"/>
+            <files mask="tcp_out.c"/>
+            <files mask="timeouts.c"/>
+            <files mask="udp.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/core/ipv4" target_path="lwip/src/core/ipv4" type="src">
+            <files mask="acd.c"/>
+            <files mask="autoip.c"/>
+            <files mask="dhcp.c"/>
+            <files mask="etharp.c"/>
+            <files mask="icmp.c"/>
+            <files mask="igmp.c"/>
+            <files mask="ip4.c"/>
+            <files mask="ip4_addr.c"/>
+            <files mask="ip4_frag.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/core/ipv6" target_path="lwip/src/core/ipv6" type="src">
+            <files mask="dhcp6.c"/>
+            <files mask="ethip6.c"/>
+            <files mask="icmp6.c"/>
+            <files mask="inet6.c"/>
+            <files mask="ip6.c"/>
+            <files mask="ip6_addr.c"/>
+            <files mask="ip6_frag.c"/>
+            <files mask="mld6.c"/>
+            <files mask="nd6.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/compat/posix/arpa" target_path="lwip/src/include/compat/posix/arpa" type="c_include">
+            <files mask="inet.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/compat/posix/net" target_path="lwip/src/include/compat/posix/net" type="c_include">
+            <files mask="if.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/compat/posix" target_path="lwip/src/include/compat/posix" type="c_include">
+            <files mask="netdb.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/compat/posix/sys" target_path="lwip/src/include/compat/posix/sys" type="c_include">
+            <files mask="socket.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/compat/stdc" target_path="lwip/src/include/compat/stdc" type="c_include">
+            <files mask="errno.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/lwip" target_path="lwip/src/include/lwip" type="c_include">
+            <files mask="acd.h"/>
+            <files mask="altcp.h"/>
+            <files mask="altcp_tcp.h"/>
+            <files mask="altcp_tls.h"/>
+            <files mask="api.h"/>
+            <files mask="arch.h"/>
+            <files mask="autoip.h"/>
+            <files mask="debug.h"/>
+            <files mask="def.h"/>
+            <files mask="dhcp.h"/>
+            <files mask="dhcp6.h"/>
+            <files mask="dns.h"/>
+            <files mask="err.h"/>
+            <files mask="errno.h"/>
+            <files mask="etharp.h"/>
+            <files mask="ethip6.h"/>
+            <files mask="icmp.h"/>
+            <files mask="icmp6.h"/>
+            <files mask="if_api.h"/>
+            <files mask="igmp.h"/>
+            <files mask="inet.h"/>
+            <files mask="inet_chksum.h"/>
+            <files mask="init.h"/>
+            <files mask="ip.h"/>
+            <files mask="ip4.h"/>
+            <files mask="ip4_addr.h"/>
+            <files mask="ip4_frag.h"/>
+            <files mask="ip6.h"/>
+            <files mask="ip6_addr.h"/>
+            <files mask="ip6_frag.h"/>
+            <files mask="ip6_zone.h"/>
+            <files mask="ip_addr.h"/>
+            <files mask="mem.h"/>
+            <files mask="memp.h"/>
+            <files mask="mld6.h"/>
+            <files mask="nd6.h"/>
+            <files mask="netbuf.h"/>
+            <files mask="netdb.h"/>
+            <files mask="netif.h"/>
+            <files mask="netifapi.h"/>
+            <files mask="opt.h"/>
+            <files mask="pbuf.h"/>
+            <files mask="raw.h"/>
+            <files mask="sio.h"/>
+            <files mask="snmp.h"/>
+            <files mask="sockets.h"/>
+            <files mask="stats.h"/>
+            <files mask="sys.h"/>
+            <files mask="tcp.h"/>
+            <files mask="tcpbase.h"/>
+            <files mask="tcpip.h"/>
+            <files mask="timeouts.h"/>
+            <files mask="udp.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/lwip/priv" target_path="lwip/src/include/lwip/priv" type="c_include">
+            <files mask="altcp_priv.h"/>
+            <files mask="api_msg.h"/>
+            <files mask="mem_priv.h"/>
+            <files mask="memp_priv.h"/>
+            <files mask="memp_std.h"/>
+            <files mask="nd6_priv.h"/>
+            <files mask="raw_priv.h"/>
+            <files mask="sockets_priv.h"/>
+            <files mask="tcp_priv.h"/>
+            <files mask="tcpip_priv.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/lwip/prot" target_path="lwip/src/include/lwip/prot" type="c_include">
+            <files mask="acd.h"/>
+            <files mask="autoip.h"/>
+            <files mask="dhcp.h"/>
+            <files mask="dhcp6.h"/>
+            <files mask="dns.h"/>
+            <files mask="etharp.h"/>
+            <files mask="ethernet.h"/>
+            <files mask="iana.h"/>
+            <files mask="icmp.h"/>
+            <files mask="icmp6.h"/>
+            <files mask="ieee.h"/>
+            <files mask="igmp.h"/>
+            <files mask="ip.h"/>
+            <files mask="ip4.h"/>
+            <files mask="ip6.h"/>
+            <files mask="mld6.h"/>
+            <files mask="nd6.h"/>
+            <files mask="tcp.h"/>
+            <files mask="udp.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/netif" target_path="lwip/src/include/netif" type="c_include">
+            <files mask="bridgeif.h"/>
+            <files mask="bridgeif_opts.h"/>
+            <files mask="etharp.h"/>
+            <files mask="ethernet.h"/>
+            <files mask="ieee802154.h"/>
+            <files mask="lowpan6.h"/>
+            <files mask="lowpan6_ble.h"/>
+            <files mask="lowpan6_common.h"/>
+            <files mask="lowpan6_opts.h"/>
+            <files mask="slipif.h"/>
+            <files mask="zepif.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/netif/ppp" target_path="lwip/src/include/netif/ppp" type="c_include">
+            <files mask="ccp.h"/>
+            <files mask="chap-md5.h"/>
+            <files mask="chap-new.h"/>
+            <files mask="chap_ms.h"/>
+            <files mask="eap.h"/>
+            <files mask="ecp.h"/>
+            <files mask="eui64.h"/>
+            <files mask="fsm.h"/>
+            <files mask="ipcp.h"/>
+            <files mask="ipv6cp.h"/>
+            <files mask="lcp.h"/>
+            <files mask="magic.h"/>
+            <files mask="mppe.h"/>
+            <files mask="ppp.h"/>
+            <files mask="ppp_impl.h"/>
+            <files mask="ppp_opts.h"/>
+            <files mask="pppapi.h"/>
+            <files mask="pppcrypt.h"/>
+            <files mask="pppdebug.h"/>
+            <files mask="pppoe.h"/>
+            <files mask="pppol2tp.h"/>
+            <files mask="pppos.h"/>
+            <files mask="upap.h"/>
+            <files mask="vj.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/include/netif/ppp/polarssl" target_path="lwip/src/include/netif/ppp/polarssl" type="c_include">
+            <files mask="arc4.h"/>
+            <files mask="des.h"/>
+            <files mask="md4.h"/>
+            <files mask="md5.h"/>
+            <files mask="sha1.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/netif" target_path="lwip/src/netif" type="src">
+            <files mask="bridgeif.c"/>
+            <files mask="bridgeif_fdb.c"/>
+            <files mask="ethernet.c"/>
+            <files mask="lowpan6.c"/>
+            <files mask="lowpan6_ble.c"/>
+            <files mask="lowpan6_common.c"/>
+            <files mask="slipif.c"/>
+            <files mask="zepif.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/netif/ppp" target_path="lwip/src/netif/ppp" type="src">
+            <files mask="auth.c"/>
+            <files mask="ccp.c"/>
+            <files mask="chap-md5.c"/>
+            <files mask="chap-new.c"/>
+            <files mask="chap_ms.c"/>
+            <files mask="demand.c"/>
+            <files mask="eap.c"/>
+            <files mask="eui64.c"/>
+            <files mask="fsm.c"/>
+            <files mask="ipcp.c"/>
+            <files mask="ipv6cp.c"/>
+            <files mask="lcp.c"/>
+            <files mask="lwip_ecp.c"/>
+            <files mask="magic.c"/>
+            <files mask="mppe.c"/>
+            <files mask="multilink.c"/>
+            <files mask="ppp.c"/>
+            <files mask="pppapi.c"/>
+            <files mask="pppcrypt.c"/>
+            <files mask="pppoe.c"/>
+            <files mask="pppol2tp.c"/>
+            <files mask="pppos.c"/>
+            <files mask="upap.c"/>
+            <files mask="utils.c"/>
+            <files mask="vj.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/lwip/src/netif/ppp/polarssl" target_path="lwip/src/netif/ppp/polarssl" type="src">
+            <files mask="arc4.c"/>
+            <files mask="des.c"/>
+            <files mask="md4.c"/>
+            <files mask="md5.c"/>
+            <files mask="sha1.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/mdio" target_path="mdio" type="src">
+            <files mask="fsl_enet_mdio.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/mdio" target_path="mdio" type="c_include">
+            <files mask="fsl_enet_mdio.h"/>
+            <files mask="fsl_mdio.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/phy" target_path="phy" type="c_include">
+            <files mask="fsl_phy.h"/>
+            <files mask="fsl_phyksz8081.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/phy" target_path="phy" type="src">
+            <files mask="fsl_phyksz8081.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/source" target_path="source" type="src">
+            <files mask="lwip_ping_bm.c"/>
+            <files mask="semihost_hardfault.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/source" target_path="source" type="c_include">
+            <files mask="lwipopts.h"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/xip" target_path="xip" type="src">
+            <files mask="evkbimxrt1050_flexspi_nor_config.c"/>
+            <files mask="fsl_flexspi_nor_boot.c"/>
+        </source>
+        <source path="boards/carrier_v1_compact_1052/lwip_examples/lwip_ping_bm/xip" target_path="xip" type="c_include">
+            <files mask="evkbimxrt1050_flexspi_nor_config.h"/>
+            <files mask="fsl_flexspi_nor_boot.h"/>
+        </source>
+    </example>
+</ns2:examples>
